@@ -8,10 +8,17 @@ public class Main {
         System.out.println(r1);
         System.out.println(r2);
         System.out.println(r3);
+        
+        try{
+            r1.zasilKonto(20);
+            System.out.println(r1);
+            r1.wyplacSrodki(150);
+            System.out.println(r1);
 
-        r1.zasilKonto(200);
-        System.out.println(r1);
-        r1.wyplacSrodki(150);
-        System.out.println(r1);
+            r1.naliczOprocentowanie();
+            System.out.println(r1);
+        }catch (RuntimeException e){
+            System.out.println(e);
+        }
     }
 }
