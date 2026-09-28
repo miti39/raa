@@ -1,0 +1,17 @@
+public class Main {
+    public static void main(String[] args) {
+
+        konto r1 = new konto("mati", "rak", 45.09, 3.4, true);
+        konto r2 = new konto("karol", "raff", 3.6, false);
+        konto r3 = new konto("mario", "zbych", 2.7);
+
+        System.out.println(r1);
+        System.out.println(r2);
+        System.out.println(r3);
+
+        r1.zasilKonto(200);
+        System.out.println(r1);
+        r1.wyplacSrodki(150);
+        System.out.println(r1);
+    }
+}
