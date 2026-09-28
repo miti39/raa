@@ -60,4 +60,11 @@ public class konto {
         }
         saldo -= kwota;
     }
+
+    public void naliczOprocentowanie(){
+        if(czyAktywne){
+            saldo += saldo * (oprocentowanie / 100);
+        }
+
+    }
 }
