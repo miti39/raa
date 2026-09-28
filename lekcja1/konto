@@ -1,0 +1,63 @@
+public class konto {
+    private static int nr = 1;
+    private int nrKonta;
+    private String imie;
+    private String nazwa;
+    private double saldo;
+    private double oprocentowanie;
+    private boolean czyAktywne;
+
+    public konto(String imie, String nazwa, double saldo, double oprocentowanie, boolean czyAktywne) {
+        this.nrKonta = nr++;
+        this.imie = imie;
+        this.nazwa = nazwa;
+        this.saldo = saldo;
+        this.oprocentowanie = oprocentowanie;
+        this.czyAktywne = czyAktywne;
+    }
+
+    public konto(String imie, String nazwa,double oprocentowanie, boolean czyAktywne) {
+        this.nrKonta = nr++;
+        this.imie = imie;
+        this.nazwa = nazwa;
+        this.saldo = 0;
+        this.oprocentowanie = oprocentowanie;
+        this.czyAktywne = czyAktywne;
+    }
+
+    public konto(String imie, String nazwa,double oprocentowanie) {
+        this.nrKonta = nr++;
+        this.imie = imie;
+        this.nazwa = nazwa;
+        this.saldo = 0;
+        this.oprocentowanie = oprocentowanie;
+        this.czyAktywne = true;
+    }
+
+    public String toString(){
+        return nrKonta +", "+ imie +" "+ nazwa +", "+ saldo +", "+ oprocentowanie +", "+ (czyAktywne? "Aktywny":"Nie aktywny");
+    }
+
+    public void zasilKonto(double kwota){
+        if(kwota <= 0){
+            throw new RuntimeException("kwota nie może być równa 0");
+        }
+        if(! czyAktywne){
+            throw new RuntimeException("konto jest wylaczone");
+        }
+        saldo += kwota;
+    }
+
+    public void wyplacSrodki(double kwota){
+        if(kwota <= 0){
+            throw new RuntimeException("kwota nie może być równa 0");
+        }
+        if(! czyAktywne){
+            throw new RuntimeException("konto jest wylaczone");
+        }
+        if(saldo - kwota < 0){
+            throw new RuntimeException("jesteś za biedny. nie możesz wyplaczić takiej dużej kowty");
+        }
+        saldo -= kwota;
+    }
+}
